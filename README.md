@@ -4,8 +4,6 @@ SPITBOL 360 README FILE
 11/08/2001  Updated for Hercules AWS installation (Bob Goldberg)
  8/20/2001  Initial Version (Bob Goldberg)
 
-
-
 Readme Contents
 ---------------
 
@@ -21,9 +19,7 @@ Reassembling the Compiler
 
 Acknowledgments
 
-
-
-What is SPITBOL 360? ?*?
+What is SPITBOL 360? ?\*?
 ------------------------
 
 SPITBOL 360 is an implementation of the SNOBOL4 programming language
@@ -33,7 +29,7 @@ execution speeds up to ten times faster. For certain programs,
 notably those with in-line patterns, the gain in speed may be even
 greater.
 
-Unlike SIL SNOBOL4?**?, which is an interpreter, SPITBOL is a true
+Unlike SIL SNOBOL4?\*\*?, which is an interpreter, SPITBOL is a true
 compiler which generates executable machine code. Of course, the
 complexity of the SNOBOL4 language dictates that system subroutines
 be used for many common functions.
@@ -44,7 +40,7 @@ Alternately, the compiler can generate object modules that can be
 linked with a run-time library to create load modules for later
 execution.
 
-SPITBOL 360 was originally distributed under license, for a fee.?***?
+SPITBOL 360 was originally distributed under license, for a fee.?\*\*\*?
 Effective November, 2001, SPITBOL 360 will be distributed under the
 General Public License (GPL), for no fee.
 
@@ -53,13 +49,12 @@ visit:
 
     http://www.snobol4.com
 
-
 ----
 
-?*? SPITBOL = SPeedy ImplemenTation of SNOBOL4
+?\*? SPITBOL = SPeedy ImplemenTation of SNOBOL4
               --     -       -            ---
 
-?**? The original SNOBOL4 implementation from Bell Telephone
+?\*\*? The original SNOBOL4 implementation from Bell Telephone
 Laboratories was developed by R. E. Griswold and I. Polonsky, the
 designers of the SNOBOL4 programming language. Thus, this reference
 implementation is often referred to as BTL SNOBOL4. In the early
@@ -68,7 +63,7 @@ continued SNOBOL4 distribution from there, this implementation
 gained another name: SIL SNOBOL4. (SIL = SNOBOL4 Implementation
 Language)
 
-?***? SPITBOL 360 was distributed from 1971 until 1984 when it was
+?\*\*\*? SPITBOL 360 was distributed from 1971 until 1984 when it was
 superseded by SPITBOL 370.
 
 
@@ -102,51 +97,47 @@ provided in ASCII as a convenience to users.
 
   File Name        Contents
   ---- ----------  -------------------------------------------------
-    1  README.TXT  (ASCII) Readme file (translation of README)
+    1.  README.TXT  (ASCII) Readme file (translation of README)
 
-    2  GPL.TXT     (ASCII) General Public License text (translation
+    2.  GPL.TXT     (ASCII) General Public License text (translation
                    of GPL)
 
-    3  README      Readme file
+    3.  README      Readme file
 
-    4  GPL         General Public License
+    4.  GPL         General Public License
 
-    5  SBOLOBJ     Object files to create SPITBOL compiler
+    5.  SBOLOBJ     Object files to create SPITBOL compiler
 
-    6  LINKSBOL    Sample JCL to link SPITBOL compiler
+    6.  LINKSBOL    Sample JCL to link SPITBOL compiler
 
-    7  TESTPGMS    Compiler test programs
+    7.  TESTPGMS    Compiler test programs
 
-    8  TESTSBOL    Sample JCL to run compiler test programs
+    8.  TESTSBOL    Sample JCL to run compiler test programs
 
-    9  SLIBOBJ     Object files to create SPITPROG runtime
+    9.  SLIBOBJ     Object files to create SPITPROG runtime
 
-   10  LINKSPRG    Sample JCL to link SPITPROG runtime
+   10.  LINKSPRG    Sample JCL to link SPITPROG runtime
 
-   11  OSINT       OSINT assembler source
+   11.  OSINT       OSINT assembler source
 
-   12  SPITBOL     SPITBOL assembler source
+   12.  SPITBOL     SPITBOL assembler source
 
-   13  TFSV23      TFs for SPITBOL and SPITPROG
+   13.  TFSV23      TFs for SPITBOL and SPITPROG
 
 
 ALL EBDCIC distribution files are sequential card image files, with
 DCB attributes RECBM=FB and LRECL=80.
 
-
 Installation is quite simple: only four files need be loaded onto
 your system, followed by a link edit and test run.
-
 
   Step 1: Create datasets
 
   Create two datasets:
 
-  (1) a SPITBOL.SRC PDS (SOURCE LIB) to receive object files, sample
-      JCL, and test programs
+  (1) a SPITBOL.SRC PDS (SOURCE LIB) to receive object files, sample JCL, and test programs
 
-  (2) a SPITBOL.LOAD PDS (LOAD LIB) to receive the output of the
-      linkage editor
+  (2) a SPITBOL.LOAD PDS (LOAD LIB) to receive the output of the linkage editor
 
 
   Step 2: Populate the SPITBOL PDS
@@ -154,13 +145,13 @@ your system, followed by a link edit and test run.
   Load the following files into your SPITBOL PDS:
 
 
-    5  SBOLOBJ    Object files to create SPITBOL compiler
+    5.  SBOLOBJ    Object files to create SPITBOL compiler
 
-    6  LINKSBOL   Sample JCL to link SPITBOL compiler
+    6.  LINKSBOL   Sample JCL to link SPITBOL compiler
 
-    7  TESTPGMS   Compiler test programs
+    7.  TESTPGMS   Compiler test programs
 
-    8  TESTSBOL   Sample JCL to run compiler test programs
+    8.  TESTSBOL   Sample JCL to run compiler test programs
 
 
   Step 3: Link SPITBOL Compiler
@@ -172,12 +163,11 @@ your system, followed by a link edit and test run.
     // EXEC LKED
     //SYSLMOD   DD  DSN=SPITBOL.LOAD,DISP=SHR
     //OBJS      DD  DSN=SPITBOL.SRC,DISP=SHR
-    //SYSIN     DD  *
+    //SYSIN     DD  \*
      INCLUDE OBJS(SBOLOBJ)
      ENTRY OSINT
      NAME SPITBOL(R)
-    /*
-
+    /\*
 
   Step 4: Test compiler
 
@@ -185,7 +175,6 @@ your system, followed by a link edit and test run.
   only have to run the compiler once; SPITBOL 360 supports its own
   batching of jobs. Member TESTSBOL contains sample JCL to run the
   test programs. Examine, modify and run.
-
 
     //.. JOB ....
     // EXEC PGM=SPITBOL,REGION=512K
@@ -196,9 +185,7 @@ your system, followed by a link edit and test run.
 
   SPITBOL 360 is happiest in regions of 192K or more.
 
-
   You're done! ENJOY!
-
 
   Optional Step 5: Link SPITPROG Runtime Library
 
@@ -210,9 +197,9 @@ your system, followed by a link edit and test run.
 
   Load the following files into your SPITBOL PDS:
 
-    9  SLIBOBJ    Object files to create SPITPROG runtime
+    9.  SLIBOBJ    Object files to create SPITPROG runtime
 
-   10  LINKSPRG   Sample JCL to link SPITPROG runtime
+   10.  LINKSPRG   Sample JCL to link SPITPROG runtime
 
   Member LINKSLIB contains sample JCL to link the SPITBOL runtime
   library. Examine, modify, and run.
@@ -221,11 +208,11 @@ your system, followed by a link edit and test run.
     // EXEC LKED
     //SYSLMOD   DD  DSN=SPITBOL.LOAD,DISP=SHR
     //OBJS      DD  DSN=SPITBOL.SRC,DISP=SHR
-    //SYSIN     DD  *
+    //SYSIN     DD  \*
      INCLUDE OBJS(SLIBOBJ)
      ENTRY OSINT
      NAME SPITPROG(R)
-    /*
+    /\*
 
   To compile and link a SPITBOL program:
 
@@ -236,25 +223,23 @@ your system, followed by a link edit and test run.
     //SYSPUNCH  DD  DUMMY
     //SYSOBJ    DD  DSN=&OBJ,UNIT=...,SPACE=(...),
     //              DCB=(RECFM=FB,LRECL=80,BLKSIZE=1600),DISP=(NEW,PASS)
-    //SYSIN     DD  *
+    //SYSIN     DD  \*
     -NOEXECUTE
     <program goes here>
-    /*
+    /\*
     // EXEC LKED
     //SYSLMOD   DD  DSN=<your load lib>,DISP=SHR
     //LIB       DD  DSN=SPITBOL.LOAD,DISP=SHR
     //OBJ       DD  DSN=&OBJ,DISP=(OLD,DELETE)
-    //SYSIN     DD  *
+    //SYSIN     DD  \*
      INCLUDE LIB(SPITPROG)
      INCLUDE OBJ
      ENTRY OSINT
      NAME FOO
-    /*
+    /\*
 
   See SPITBOL Newsletter #1, which is contained in the SPITBOL 360
   Manual PDF file, for the original instructions circa 1971.
-
-
 
 Hercules AWS Installation
 -------------------------
@@ -270,17 +255,17 @@ file.
 
   File Name          Contents
   ---- ------------  ----------------------------------------------
-    1  README.TXT    (ASCII) Readme file
+    1.  README.TXT    (ASCII) Readme file
 
-    2  GPL.TXT       (ASCII) General Public License text
+    2.  GPL.TXT       (ASCII) General Public License text
 
-    3  SPT-LOAD.JCL  (ASCII) JCL to load files from AWS tape file
+    3.  SPT-LOAD.JCL  (ASCII) JCL to load files from AWS tape file
 
-    4  SPT-LINK.JCL  (ASCII) JCL to link SPITBOL load module
+    4.  SPT-LINK.JCL  (ASCII) JCL to link SPITBOL load module
 
-    5  SPT-TEST.JCL  (ASCII) JCL to test SPITBOL
+    5.  SPT-TEST.JCL  (ASCII) JCL to test SPITBOL
 
-    6  SPITBOL.AWS   AWS file representing unlabelled tape (NL)
+    6.  SPITBOL.AWS   AWS file representing unlabelled tape (NL)
                      that contains files 3 to 13, in order, from
                      the standard distribution (see list above)
 
